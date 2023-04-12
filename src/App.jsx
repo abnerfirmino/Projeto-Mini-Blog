@@ -4,13 +4,14 @@ import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { NavBar } from './components/NavBar';
 import { Footer } from './components/Footer';
+import { Header } from './components/Header';
 
 function App() {
 
   return (
     <div className="App">
       <BrowserRouter>
-      <Home />
+      <Header />
       <NavBar />
         <div className="container">
           <Routes>

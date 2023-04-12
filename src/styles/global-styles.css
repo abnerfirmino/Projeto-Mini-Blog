@@ -4,7 +4,11 @@
   box-sizing: border-box;
 }
 
-#root {
+.body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.App {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
