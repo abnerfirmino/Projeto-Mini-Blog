@@ -8,8 +8,39 @@
   font-family: "Montserrat", sans-serif;
 }
 
+#root {
+  background-color: #f6fcff;
+}
+
 .App {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+input::placeholder, 
+textarea::placeholder {
+  font-family: "Montserrat", sans-serif;
+}
+
+input:focus, 
+textarea:focus {
+  outline: none;
+}
+
+a, 
+nav button {
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  color: #000;
+  transition: 300ms;
+  font-size: 1em;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+}
+
+a:hover, 
+nav button:hover {
+  color: #bbb;
 }
