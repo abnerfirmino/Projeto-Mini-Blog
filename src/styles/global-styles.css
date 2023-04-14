@@ -47,7 +47,7 @@ nav button:hover {
 
 /* Estilo dos formulários */
 form {
-  max-width: 40%;
+  max-width: 70%;
   margin: 0.7em auto 0 auto;
 }
 
@@ -121,9 +121,11 @@ button[disabled] {
 }
 
 .error {
+  display: block;
   color: #721c24;
   background-color: #f8d7da;
   border: 1px solid #f5c6cb;
   padding: 5px;
   border-radius: 5px;
+  margin-bottom: 0.5em;
 }
