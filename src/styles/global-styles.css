@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.body {
+body {
   font-family: "Montserrat", sans-serif;
 }
 
@@ -45,10 +45,9 @@ nav button:hover {
   color: #bbb;
 }
 
-
 /* Estilo dos formulários */
 form {
-  max-width: 30%;
+  max-width: 40%;
   margin: 0.7em auto 0 auto;
 }
 
@@ -121,7 +120,7 @@ button[disabled] {
   background-color: #aaa;
 }
 
-.container .error {
+.error {
   color: #721c24;
   background-color: #f8d7da;
   border: 1px solid #f5c6cb;
