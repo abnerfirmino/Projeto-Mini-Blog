@@ -13,7 +13,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Header />
       <NavBar />
         <div className="container">
           <Routes>
