@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './styles.css';
+import { useAuthentication } from '../../hooks/useAuthentication';
 
 const Register = () => {
   // estados do formulário
@@ -9,8 +10,11 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
+  // fazendo a autenticação do usuário
+  const { auth, createUser, error: authError, loading } = useAuthentication();
+
   // função do submit
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
@@ -20,14 +24,24 @@ const Register = () => {
       password
     }
 
-    // Validação da senha
+    // erro de validação da senha
     if(password !== confirmPassword) {
       setError("ERRO! As senhas devem ser iguais!");
       return false;
     }
 
+    // criando o usuário
+    const res = await createUser(user);
+
     return true;
   }
+
+  // monitora o erro de autenticação
+  useEffect(() => {
+    if(authError) {
+      setError(authError);
+    }
+  }, [authError]);
 
   return (
     <div className='register'>
@@ -78,8 +92,9 @@ const Register = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </label>
+        {!loading && <button className='btn' type='submit'>Cadastrar</button>}
+        {loading && <button className='btn' type='submit' disabled>Aguarde...</button>}
         {error && <span className='error'>{error}</span>}
-        <button className='btn' type='submit'>Cadastrar</button>
       </form>
     </div>
   );
