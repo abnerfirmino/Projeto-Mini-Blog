@@ -1,3 +1,6 @@
+// importação do banco de dados do firebase
+import { db } from '../firebase/config';
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
