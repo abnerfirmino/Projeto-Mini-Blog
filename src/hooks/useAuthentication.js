@@ -13,7 +13,7 @@ import { useState, useEffect } from 'react';
 
 const useAuthentication = () => {
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   // cleanup
   // evita memory leak
@@ -30,9 +30,9 @@ const useAuthentication = () => {
   const createUser = async (data) => {
     checkIfIsCancelled();
 
-    setLoading(true);
-
     try {
+      setLoading(true);
+      // criando o usuário
       const {user} = await createUserWithEmailAndPassword(
         auth,
         data.email,
@@ -43,17 +43,30 @@ const useAuthentication = () => {
         displayName: data.name,
       });
 
+      setLoading(false);
       return user;
 
     } catch (error) {
       console.log(error.message);
       console.log(typeof error.message);
-    }
 
-    setLoading(false);
+      // tratando o erro para o usuário
+      let systemErrorMessage;
+
+      if(error.message.includes("Password")) {
+        systemErrorMessage = "A senha precisa conter pelo menos 6 caracteres.";
+      } else if(error.message.includes("email-already")) {
+        systemErrorMessage = "Esse e-mail já está cadastrado.";
+      } else {
+        systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde."
+      }
+
+      setError(systemErrorMessage);
+      setLoading(false);
+    }
   }
 
-  // 
+  // limpa os estados antes de sair do componente
   useEffect(() => {
     return () => setCancelled(true);
   }, []);
