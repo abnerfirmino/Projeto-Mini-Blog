@@ -7,13 +7,37 @@ import { Register } from './pages/Register';
 import { NavBar } from './components/NavBar';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
+
+// hooks
+import { useEffect, useState } from 'react';
 import { AuthContextProvider } from './context/AuthContext';
+import { useAuthentication } from './hooks/useAuthentication';
+
+// imports do firebase
+import { onAuthStateChanged } from 'firebase/auth';
 
 function App() {
+  // estados da app
+  const [user, setUser] = useState(undefined);
+  const {auth} = useAuthentication();
+
+  const loadingUser = user === undefined;
+
+  // monitorando a autenticação
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+  }, [auth]);
+
+  // carrega se não tiver usuário
+  if (loadingUser) {
+    return (<p>Carregando...</p>);
+  }
 
   return (
     <div className="App">
-      <AuthContextProvider>
+      <AuthContextProvider value={{ user }}>
         <BrowserRouter>
         <NavBar />
           <div className="container">
