@@ -47,8 +47,9 @@
 }
 
 @media screen and (max-width: 425px) {
-  .footer {
-    height: 5px;
+  .container {
+    height: calc(100vh - 180px);
+    margin: 10em auto;
   }
 
   .bars {
