@@ -7,6 +7,9 @@ import { Register } from './pages/Register';
 import { NavBar } from './components/NavBar';
 import { Footer } from './components/Footer';
 
+import { UserDashboard } from './pages/UserDashboard';
+import { CreatePost } from './pages/CreatePost';
+
 // hooks
 import { useEffect, useState } from 'react';
 import { AuthContextProvider } from './context/AuthContext';
@@ -45,6 +48,8 @@ function App() {
               <Route path='/about' element={<About />} />
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
+              <Route path='/posts/create' element={<CreatePost />} />
+              <Route path='/dashboard' element={<UserDashboard />} />
             </Routes>
           </div>
           <Footer />
