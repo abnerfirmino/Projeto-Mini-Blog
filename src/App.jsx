@@ -52,6 +52,7 @@ function App() {
       </AuthContextProvider>
     </div>
   );
+
 }
 
 export default App;
