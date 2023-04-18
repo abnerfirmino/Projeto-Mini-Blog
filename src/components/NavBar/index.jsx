@@ -1,7 +1,6 @@
 import './styles.css';
 import { NavLink } from 'react-router-dom';
 
-import { useAuthentication } from '../../hooks/useAuthentication';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useState } from 'react';
 
