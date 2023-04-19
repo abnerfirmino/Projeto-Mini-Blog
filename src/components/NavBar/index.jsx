@@ -1,6 +1,7 @@
 import './styles.css';
 import { NavLink } from 'react-router-dom';
 
+import { useAuthentication } from '../../hooks/useAuthentication';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useState } from 'react';
 
@@ -8,6 +9,9 @@ const NavBar = () => {
   // pegando o context do usuário
   const {user} = useAuthContext();
   const [menuSelected, setMenuSelected] = useState(false);
+
+  // logout
+  const {logout} = useAuthentication();
 
   // menu responsivo
   const handleMenu = () => {
@@ -44,6 +48,11 @@ const NavBar = () => {
           <li>
             <NavLink to='/dashboard' className={({isActive}) => (isActive ? 'active' : '')}>Visualizar Posts</NavLink>
           </li>
+          {user && (
+            <li>
+              <button onClick={logout}>Sair</button>
+            </li>
+          )}
         </>          
         )}
       </ul>

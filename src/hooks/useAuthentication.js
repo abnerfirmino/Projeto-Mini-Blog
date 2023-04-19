@@ -66,6 +66,13 @@ const useAuthentication = () => {
     }
   }
 
+  // Função do Log out do firebase
+  const logout = () => {
+    checkIfIsCancelled();
+
+    signOut(auth);
+  }
+
   // limpa os estados antes de sair do componente
   useEffect(() => {
     return () => setCancelled(true);
@@ -75,7 +82,8 @@ const useAuthentication = () => {
     auth,
     createUser,
     error,
-    loading
+    loading,
+    logout,
   }
 }
 

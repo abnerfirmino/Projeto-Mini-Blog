@@ -49,7 +49,7 @@
 @media screen and (max-width: 425px) {
   .container {
     height: calc(100vh - 180px);
-    margin: 10em auto;
+    margin: 12em auto;
   }
 
   .bars {
