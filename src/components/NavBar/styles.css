@@ -1,3 +1,7 @@
+header {
+  height: 2.5rem;
+}
+
 .navbar {
   display: flex;
   background-color: #f6fcff;
@@ -48,6 +52,10 @@
 }
 
 @media screen and (max-width: 425px) {
+  header {
+    height: 5rem;
+  }
+
   .navbar {
     position: fixed;
     width: 100%;

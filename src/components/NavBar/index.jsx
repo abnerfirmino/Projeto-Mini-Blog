@@ -19,49 +19,51 @@ const NavBar = () => {
   }
 
   return (
-    <nav className='navbar'>
-      <a href='/' className='brand'>
-        Mini <span>Blog</span>
-      </a>
-      <ul className={'links-list ' + menuSelected}>
-        <li>
-          <NavLink to='/' className={({isActive}) => (isActive ? 'active' : '')}>Home</NavLink>
-        </li>
-        <li>
-          <NavLink to='/about' className={({isActive}) => (isActive ? 'active' : '')}>Sobre</NavLink>
-        </li>
-        {!user && (
-          <>
-            <li>
-              <NavLink to='/login' className={({isActive}) => (isActive ? 'active' : '')}>Entrar</NavLink>
-            </li>
-            <li>
-              <NavLink to='/register' className={({isActive}) => (isActive ? 'active' : '')}>Cadastrar</NavLink>
-            </li>
-          </>
-        )}
-        {user && (
-          <>
+    <header>
+      <nav className='navbar'>
+        <a href='/' className='brand'>
+          Mini <span>Blog</span>
+        </a>
+        <ul className={'links-list ' + menuSelected}>
           <li>
-            <NavLink to='/posts/create' className={({isActive}) => (isActive ? 'active' : '')}>Novo Post</NavLink>
+            <NavLink to='/' className={({isActive}) => (isActive ? 'active' : '')}>Home</NavLink>
           </li>
           <li>
-            <NavLink to='/dashboard' className={({isActive}) => (isActive ? 'active' : '')}>Visualizar Posts</NavLink>
+            <NavLink to='/about' className={({isActive}) => (isActive ? 'active' : '')}>Sobre</NavLink>
           </li>
-          {user && (
-            <li>
-              <button onClick={logout}>Sair</button>
-            </li>
+          {!user && (
+            <>
+              <li>
+                <NavLink to='/login' className={({isActive}) => (isActive ? 'active' : '')}>Entrar</NavLink>
+              </li>
+              <li>
+                <NavLink to='/register' className={({isActive}) => (isActive ? 'active' : '')}>Cadastrar</NavLink>
+              </li>
+            </>
           )}
-        </>          
-        )}
-      </ul>
-      <div className={'bars ' + menuSelected} onClick={handleMenu}>
-        <span className='bar'></span>
-        <span className='bar'></span>
-        <span className='bar'></span>
-      </div>
-    </nav>
+          {user && (
+            <>
+            <li>
+              <NavLink to='/posts/create' className={({isActive}) => (isActive ? 'active' : '')}>Novo Post</NavLink>
+            </li>
+            <li>
+              <NavLink to='/dashboard' className={({isActive}) => (isActive ? 'active' : '')}>Visualizar Posts</NavLink>
+            </li>
+            {user && (
+              <li>
+                <button onClick={logout}>Sair</button>
+              </li>
+            )}
+          </>          
+          )}
+        </ul>
+        <div className={'bars ' + menuSelected} onClick={handleMenu}>
+          <span className='bar'></span>
+          <span className='bar'></span>
+          <span className='bar'></span>
+        </div>
+      </nav>
+    </header>
   );
 }
 

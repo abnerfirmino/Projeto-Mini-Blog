@@ -42,7 +42,7 @@ function App() {
       <AuthContextProvider value={{ user }}>
         <BrowserRouter>
         <NavBar />
-          <div className="container">
+          <main className="container">
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/about' element={<About />} />
@@ -51,7 +51,7 @@ function App() {
               <Route path='/posts/create' element={user ? <CreatePost /> : <Navigate to='/login' />} />
               <Route path='/dashboard' element={user ? <UserDashboard /> : <Navigate to='/login' />} />
             </Routes>
-          </div>
+          </main>
           <Footer />
         </BrowserRouter>
       </AuthContextProvider>
