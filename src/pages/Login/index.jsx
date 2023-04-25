@@ -10,7 +10,7 @@ const Login = () => {
   const [error, setError] = useState("");
 
   // fazendo a autenticação do usuário
-  const { auth, createUser, error: authError, loading } = useAuthentication();
+  const { auth, login, error: authError, loading } = useAuthentication();
 
   // função do submit
   const handleSubmit = async (e) => {
@@ -23,7 +23,7 @@ const Login = () => {
     }
 
     // criando o usuário
-    const res = await createUser(user);
+    const res = await login(user);
 
     return true;
   }
@@ -63,7 +63,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        {!loading && <button className='btn' type='submit'>Cadastrar</button>}
+        {!loading && <button className='btn' type='submit'>Login</button>}
         {loading && <button className='btn' type='submit' disabled>Aguarde...</button>}
         {error && <span className='error'>{error}</span>}
       </form>

@@ -73,6 +73,39 @@ const useAuthentication = () => {
     signOut(auth);
   }
 
+  // função de login do Firebase
+  const login = async (data) => {
+    checkIfIsCancelled();
+
+    try {
+      setLoading(true);
+
+      const {user} = await signInWithEmailAndPassword(
+        auth, data.email, data.password
+      );
+
+      setLoading(false);
+
+    } catch (error) {
+      console.log(error.message);
+      console.log(typeof error.message);
+
+      // tratando o erro para o usuário
+      let systemErrorMessage;
+
+      if(error.message.includes("user-not-found")) {
+        systemErrorMessage = "ERRO! Usuário não encontrado.";
+      } else if(error.message.includes("wrong-password")) {
+        systemErrorMessage = "ERRO! Senha incorreta.";
+      } else {
+        systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde."
+      }
+
+      setError(systemErrorMessage);
+      setLoading(false);
+    }
+  }
+
   // limpa os estados antes de sair do componente
   useEffect(() => {
     return () => setCancelled(true);
@@ -84,6 +117,7 @@ const useAuthentication = () => {
     error,
     loading,
     logout,
+    login,
   }
 }
 
