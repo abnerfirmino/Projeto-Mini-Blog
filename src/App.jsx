@@ -18,10 +18,10 @@ import { useAuthentication } from './hooks/useAuthentication';
 // imports do firebase
 import { onAuthStateChanged } from 'firebase/auth';
 
-function App() {
+const App = () => {
   // estados da app
   const [user, setUser] = useState(undefined);
-  const {auth} = useAuthentication();
+  const { auth } = useAuthentication();
 
   const loadingUser = user === undefined;
 
@@ -34,22 +34,34 @@ function App() {
 
   // carrega se não tiver usuário
   if (loadingUser) {
-    return (<p>Carregando...</p>);
+    return <p>Carregando...</p>;
   }
 
   return (
     <div className="App">
       <AuthContextProvider value={{ user }}>
         <BrowserRouter>
-        <NavBar />
+          <NavBar />
           <main className="container">
             <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/about' element={<About />} />
-              <Route path='/login' element={!user ? <Login /> : <Navigate to="/" />} />
-              <Route path='/register' element={!user ? <Register /> : <Navigate to="/" />} />
-              <Route path='/posts/create' element={user ? <CreatePost /> : <Navigate to='/login' />} />
-              <Route path='/dashboard' element={user ? <UserDashboard /> : <Navigate to='/login' />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route
+                path="/login"
+                element={!user ? <Login /> : <Navigate to="/" />}
+              />
+              <Route
+                path="/register"
+                element={!user ? <Register /> : <Navigate to="/" />}
+              />
+              <Route
+                path="/posts/create"
+                element={user ? <CreatePost /> : <Navigate to="/login" />}
+              />
+              <Route
+                path="/dashboard"
+                element={user ? <UserDashboard /> : <Navigate to="/login" />}
+              />
             </Routes>
           </main>
           <Footer />
@@ -57,7 +69,6 @@ function App() {
       </AuthContextProvider>
     </div>
   );
-
-}
+};
 
 export default App;
