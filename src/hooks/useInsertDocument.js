@@ -1,5 +1,5 @@
 import { db } from '../firebase/config';
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer, useRef } from 'react';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 
 const initialState = {
@@ -23,7 +23,18 @@ const insertReducer = (state, action) => {
 const useInsertDocument = (docCollection) => {
   const [response, dispatch] = useReducer(insertReducer, initialState);
 
+  // evitando memory leak
+  const isCancelled = useRef(false);
+
+  function checkIfIsCancelled() {
+    if (isCancelled.current) {
+      return false;
+    }
+  }
+
   const insertDocument = async (document) => {
+    checkIfIsCancelled();
+
     try {
       dispatch({ type: 'LOADING' });
 
@@ -34,17 +45,21 @@ const useInsertDocument = (docCollection) => {
         newDocument,
       );
 
-      dispatch({
-        type: 'INSERTED_DOC',
-        payload: insertedDocument,
-      });
+      dispatch({ type: 'INSERTED_DOC', payload: insertedDocument });
     } catch (error) {
-      dispatch({
-        type: 'ERROR',
-        payload: error.message,
-      });
+      console.log(error.message);
+      console.log(typeof error.message);
+
+      dispatch({ type: 'ERROR', payload: error.message });
     }
   };
+
+  // limpa os estados antes de sair do componente (cleanup)
+  useEffect(() => {
+    return () => {
+      isCancelled.current = true;
+    };
+  }, []);
 
   return { insertDocument, response };
 };

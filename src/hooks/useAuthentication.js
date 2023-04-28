@@ -10,19 +10,19 @@ import {
   signOut,
 } from 'firebase/auth';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const useAuthentication = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // cleanup
-  // evita memory leak
-  const [cancelled, setCancelled] = useState(false);
   const auth = getAuth();
 
+  // evitando memory leak
+  const isCancelled = useRef(false);
+
   function checkIfIsCancelled() {
-    if (cancelled) {
+    if (isCancelled.current) {
       return false;
     }
   }
@@ -103,9 +103,11 @@ const useAuthentication = () => {
     }
   };
 
-  // limpa os estados antes de sair do componente
+  // limpa os estados antes de sair do componente (cleanup)
   useEffect(() => {
-    return () => setCancelled(true);
+    return () => {
+      isCancelled.current = true;
+    };
   }, []);
 
   return {
