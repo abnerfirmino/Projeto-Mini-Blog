@@ -18,17 +18,17 @@ body {
   justify-content: space-between;
 }
 
-input::placeholder, 
+input::placeholder,
 textarea::placeholder {
   font-family: "Montserrat", sans-serif;
 }
 
-input:focus, 
+input:focus,
 textarea:focus {
   outline: none;
 }
 
-a, 
+a,
 nav button {
   text-decoration: none;
   background-color: transparent;
@@ -40,7 +40,7 @@ nav button {
   font-family: "Montserrat", sans-serif;
 }
 
-a:hover, 
+a:hover,
 nav button:hover {
   color: #bbb;
 }
@@ -127,5 +127,9 @@ button[disabled] {
   border: 1px solid #f5c6cb;
   padding: 5px;
   border-radius: 5px;
+  margin-top: 0.5em;
+}
+
+.new-user {
   margin-top: 0.5em;
 }

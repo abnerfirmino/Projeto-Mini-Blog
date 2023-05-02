@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './styles.css';
 import { useAuthentication } from '../../hooks/useAuthentication';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   // estados do formulário
@@ -71,6 +72,11 @@ const Login = () => {
             Aguarde...
           </button>
         )}
+        <p className="new-user">
+          <strong>
+            <Link to="/register">Cadastre-se aqui!</Link>
+          </strong>
+        </p>
         {error && <span className="error">{error}</span>}
       </form>
     </div>
