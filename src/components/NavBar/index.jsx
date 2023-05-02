@@ -13,6 +13,15 @@ const NavBar = () => {
   // logout
   const { logout } = useAuthentication();
 
+  const handleLogout = () => {
+    // encerra a sessão do usuário após o logout
+    logout();
+
+    // após o logout a página atual é recarregada
+    // sem limpar o cache do navegador
+    window.location.reload(false);
+  };
+
   // menu responsivo
   const handleMenu = () => {
     setMenuSelected((s) => !s);
@@ -81,7 +90,7 @@ const NavBar = () => {
               </li>
               {user && (
                 <li>
-                  <button onClick={logout}>Sair</button>
+                  <button onClick={handleLogout}>Sair</button>
                 </li>
               )}
             </>
