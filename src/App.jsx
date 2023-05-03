@@ -30,7 +30,10 @@ const App = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setUser(user);
-      setUserName(user.displayName);
+
+      if (user) {
+        setUserName(user.displayName);
+      }
     });
   }, [auth]);
 
