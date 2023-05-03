@@ -21,6 +21,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 const App = () => {
   // estados da app
   const [user, setUser] = useState(undefined);
+  const [userName, setUserName] = useState('');
   const { auth } = useAuthentication();
 
   const loadingUser = user === undefined;
@@ -29,6 +30,7 @@ const App = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setUser(user);
+      setUserName(user.displayName);
     });
   }, [auth]);
 
@@ -39,7 +41,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <AuthContextProvider value={{ user }}>
+      <AuthContextProvider value={{ user, userName }}>
         <BrowserRouter>
           <NavBar />
           <main className="container">
