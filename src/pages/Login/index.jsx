@@ -25,6 +25,7 @@ const Login = () => {
     // criando o usuário
     await login(user);
 
+    window.location.reload(false);
     return true;
   };
 
