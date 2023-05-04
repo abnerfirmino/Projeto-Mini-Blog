@@ -1,4 +1,4 @@
-.footer {
+footer {
   height: 180px;
   display: flex;
   flex-direction: column;
@@ -6,6 +6,4 @@
   justify-content: center;
   text-align: center;
   background-color: #edf3f6;
-  position: sticky;
-  bottom: 0;
 }
