@@ -47,27 +47,29 @@ const App = () => {
       <AuthContextProvider value={{ user, userName }}>
         <BrowserRouter>
           <NavBar />
-          <main className="container">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route
-                path="/login"
-                element={!user ? <Login /> : <Navigate to="/" />}
-              />
-              <Route
-                path="/register"
-                element={!user ? <Register /> : <Navigate to="/" />}
-              />
-              <Route
-                path="/posts/create"
-                element={user ? <CreatePost /> : <Navigate to="/login" />}
-              />
-              <Route
-                path="/dashboard"
-                element={user ? <UserDashboard /> : <Navigate to="/login" />}
-              />
-            </Routes>
+          <main>
+            <div className="container">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route
+                  path="/login"
+                  element={!user ? <Login /> : <Navigate to="/" />}
+                />
+                <Route
+                  path="/register"
+                  element={!user ? <Register /> : <Navigate to="/" />}
+                />
+                <Route
+                  path="/posts/create"
+                  element={user ? <CreatePost /> : <Navigate to="/login" />}
+                />
+                <Route
+                  path="/dashboard"
+                  element={user ? <UserDashboard /> : <Navigate to="/login" />}
+                />
+              </Routes>
+            </div>
           </main>
           <Footer />
         </BrowserRouter>
