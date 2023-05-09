@@ -5,10 +5,12 @@ import urlPropType from 'url-prop-type';
 
 const PostDetails = ({ post }) => {
   return (
-    <div>
-      <img src={post.image} alt={post.title} />
+    <div className="post-details">
+      <figure>
+        <img src={post.image} alt={post.title} />
+      </figure>
       <h2>{post.title}</h2>
-      <p>{post.createdBy}</p>
+      <p className="created-by">Criado por: {post.createdBy}</p>
       <div className="tags">
         {/* eslint-disable-next-line react/prop-types */}
         {post.tagsArray.map((tag, i) => (
@@ -18,7 +20,9 @@ const PostDetails = ({ post }) => {
           </p>
         ))}
       </div>
-      <Link to={`/posts/${post.id}`} className="btn btn-outline"></Link>
+      <Link to={`/posts/${post.id}`} className="btn btn-outline">
+        Ler...
+      </Link>
     </div>
   );
 };
@@ -26,9 +30,9 @@ const PostDetails = ({ post }) => {
 export { PostDetails };
 
 PostDetails.propTypes = {
-  post: PropTypes.arrayOf(
+  post: PropTypes.objectOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       createdBy: PropTypes.string.isRequired,
       tagsArray: PropTypes.array.isRequired,

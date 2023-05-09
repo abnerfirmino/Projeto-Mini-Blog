@@ -24,13 +24,13 @@ const Home = () => {
           placeholder="Busque por palavras-chave..."
           onChange={(e) => setQuery(e.target.value)}
           value={query}
+          title="Busque por palavras-chave."
         />
         <button className="btn btn-dark" type="submit">
           Pesquisar
         </button>
       </form>
       <div>
-        <h1>Posts</h1>
         {loading && (
           <p>
             <strong>Carregando...</strong>
