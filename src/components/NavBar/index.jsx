@@ -33,7 +33,7 @@ const NavBar = () => {
         <a href="/" className="brand">
           Mini <span>Blog</span>
         </a>
-        <ul className={'links-list ' + menuSelected}>
+        <ul className={'links-list ' + menuSelected} onClick={menuSelected}>
           <li>
             <NavLink
               to="/"
