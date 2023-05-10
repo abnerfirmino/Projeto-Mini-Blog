@@ -9,6 +9,7 @@ import { Footer } from './components/Footer';
 
 import { UserDashboard } from './pages/UserDashboard';
 import { CreatePost } from './pages/CreatePost';
+import { Search } from './pages/Search';
 
 // hooks
 import { useEffect, useState } from 'react';
@@ -52,6 +53,7 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/search" element={<Search />} />
                 <Route
                   path="/login"
                   element={!user ? <Login /> : <Navigate to="/" />}
