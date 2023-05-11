@@ -34,13 +34,13 @@ const useFetchDocuments = (docCollection, search = null, uid = null) => {
         let q;
 
         if (search) {
-          q = query(
+          q = await query(
             collectionRef,
             where('tagsArray', 'array-contains', search),
             orderBy('createdAt', 'desc'),
           );
         } else {
-          q = query(collectionRef, orderBy('createdAt', 'desc'));
+          q = await query(collectionRef, orderBy('createdAt', 'desc'));
         }
 
         onSnapshot(q, (querySnapshot) => {
