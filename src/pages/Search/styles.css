@@ -1,17 +1,10 @@
-.about {
+.search-container {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.about p {
-  color: #aaa;
-  margin-bottom: 2em;
-}
-
-.about a {
-  display: block;
-  margin-top: 15px;
-  padding: 10px 15px;
+.search-container h2 {
+  margin-bottom: 0.5em;
 }

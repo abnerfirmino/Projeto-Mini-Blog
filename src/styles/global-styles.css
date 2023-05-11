@@ -95,6 +95,12 @@ textarea::placeholder {
   border-radius: 0;
 }
 
+.btn-dark a {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+}
+
 .btn.btn-outline {
   background-color: transparent;
   border-radius: 0;
