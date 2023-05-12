@@ -1,8 +1,11 @@
+/* post details */
 .post-details {
   display: flex;
   flex-flow: column wrap;
   max-width: 100%;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
+  align-items: center;
+  text-align: center;
 }
 
 .post-details figure {
@@ -16,13 +19,12 @@
 }
 
 .post-details h2 {
-  text-align: left;
-  margin: 0.4em 0;
+  margin: 0.2em 0;
 }
 
 .post-details .tags {
-  margin-bottom: 1.2em;
   display: flex;
+  margin-bottom: 0;
 }
 
 .tags p {
@@ -34,11 +36,10 @@
 }
 
 .created-by {
-  text-align: left;
   font-style: italic;
   color: #444;
-  font-size: 0.8em;
-  margin-bottom: 1em;
+  font-size: 1em;
+  margin-bottom: 0.5em;
 }
 
 .btn-outline {
