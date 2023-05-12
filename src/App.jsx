@@ -10,6 +10,7 @@ import { Footer } from './components/Footer';
 import { UserDashboard } from './pages/UserDashboard';
 import { CreatePost } from './pages/CreatePost';
 import { Search } from './pages/Search';
+import { PostView } from './pages/PostView';
 
 // hooks
 import { useEffect, useState } from 'react';
@@ -54,6 +55,7 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/search" element={<Search />} />
+                <Route path="/posts/:id" element={<PostView />} />
                 <Route
                   path="/login"
                   element={!user ? <Login /> : <Navigate to="/" />}
