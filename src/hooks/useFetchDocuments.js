@@ -8,7 +8,7 @@ import {
   where,
 } from 'firebase/firestore';
 
-const useFetchDocuments = (docCollection, search = null, id = null) => {
+const useFetchDocuments = (docCollection, search = null, uid = null) => {
   const [documents, setDocuments] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(null);
@@ -39,10 +39,10 @@ const useFetchDocuments = (docCollection, search = null, id = null) => {
             where('tagsArray', 'array-contains', search),
             orderBy('createdAt', 'desc'),
           );
-        } else if (id) {
+        } else if (uid) {
           q = await query(
             collectionRef,
-            where('id', '==', id),
+            where('uid', '==', uid),
             orderBy('createdAt', 'desc'),
           );
         } else {
@@ -72,7 +72,7 @@ const useFetchDocuments = (docCollection, search = null, id = null) => {
     return () => {
       isCancelled.current = true;
     };
-  }, [docCollection, search, id]);
+  }, [docCollection, search, uid]);
 
   return { documents, error, loading };
 };
