@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { db } from '../firebase/config';
-import { collection, query, onSnapshot, where } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 
 const useFetchDocument = (docCollection, id) => {
   const [document, setDocument] = useState(null);
@@ -20,22 +20,13 @@ const useFetchDocument = (docCollection, id) => {
     const loadDocument = async () => {
       checkIfIsCancelled();
 
-      const collectionRef = collection(db, docCollection);
-
       try {
         setLoading(true);
 
-        const q = await query(collectionRef, where('id', '==', id));
-
-        onSnapshot(q, (querySnapshot) => {
-          const documentArray = querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
-          }));
-
-          const arrayToDocument = Object.assign({}, ...documentArray);
-          setDocument(arrayToDocument);
-        });
+        const docRef = await doc(db, docCollection, id);
+        const docSnap = await getDoc(docRef);
+        const docData = docSnap.data();
+        setDocument(docData);
 
         setLoading(false);
       } catch (error) {
