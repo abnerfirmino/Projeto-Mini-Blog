@@ -29,12 +29,14 @@ const PostView = () => {
           <p className="body">{post.body}</p>
           <h3>Esse post é sobre:</h3>
           <div className="tags">
-            {post.tagsArray.map((tag) => (
-              <p key={tag}>
-                <span>#</span>
-                {tag}
-              </p>
-            ))}
+            {post.tagsArray
+              .filter((tag) => tag !== '')
+              .map((tag) => (
+                <p key={tag}>
+                  <span>#</span>
+                  {tag}
+                </p>
+              ))}
           </div>
         </>
       )}

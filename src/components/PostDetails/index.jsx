@@ -12,13 +12,15 @@ const PostDetails = ({ post }) => {
       <h2>{post.title}</h2>
       <p className="created-by">Criado por: {post.createdBy}</p>
       <div className="tags">
-        {/* eslint-disable-next-line react/prop-types */}
-        {post.tagsArray.map((tag, i) => (
-          <p key={i}>
-            <span>#</span>
-            {tag}
-          </p>
-        ))}
+        {post.tagsArray
+          // eslint-disable-next-line react/prop-types
+          .filter((tag) => tag !== '')
+          .map((tag) => (
+            <p key={tag}>
+              <span>#</span>
+              {tag}
+            </p>
+          ))}
       </div>
       <Link to={`/posts/${post.id}`} className="btn btn-outline">
         Ler...
