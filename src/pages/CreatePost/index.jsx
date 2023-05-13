@@ -29,8 +29,9 @@ const CreatePost = () => {
       setFormError('A imagem precisa ser uma URL.');
     }
 
-    // criando o array de tags
-    const tagsArray = tags.split(',').map((tag) => tag.trim().toLowerCase());
+    // criando o array de no máximo 3 tags
+    const array = tags.split(',').map((tag) => tag.trim().toLowerCase());
+    const tagsArray = array.slice(0, 3);
 
     // checando todos os valores
     if (!title || !image || !tags || !body) {
@@ -42,7 +43,7 @@ const CreatePost = () => {
     }
 
     insertDocument({
-      title,
+      title: title.toUpperCase(),
       image,
       body,
       tagsArray,
@@ -118,8 +119,8 @@ const CreatePost = () => {
           </button>
         )}
         {response.error && <span className="error">{response.error}</span>}
-        {formError && <span className="error">{formError}</span>}
       </form>
+      {formError && <span className="error">{formError}</span>}
     </div>
   );
 };
