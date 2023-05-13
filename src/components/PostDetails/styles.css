@@ -6,6 +6,8 @@
   margin-bottom: 1em;
   align-items: center;
   text-align: center;
+  background-color: #fff;
+  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .post-details figure {
@@ -42,9 +44,10 @@
   margin-bottom: 0.5em;
 }
 
-.btn-outline {
+.post-details .btn-outline {
   display: flex;
   justify-content: center;
+  margin-bottom: 0.2em;
 }
 
 /* media query para 740px */
