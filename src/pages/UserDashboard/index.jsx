@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // hooks
 import { useFetchDocuments } from '../../hooks/useFetchDocuments';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { useDeleteDocument } from '../../hooks/useDeleteDocument';
 
 // components
 import { PostDetails } from '../../components/PostDetails';
@@ -18,9 +19,7 @@ const UserDashboard = () => {
     loading,
   } = useFetchDocuments('posts', null, uid);
 
-  const deleteDocument = (id) => {
-    return;
-  };
+  const { deleteDocument } = useDeleteDocument('posts');
 
   return (
     <div className="dashboard">
