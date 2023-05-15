@@ -22,7 +22,7 @@
 
 .dashboard figure img {
   width: 360px;
-  height: 240px;
+  max-height: 260px;
 }
 
 .grid {
@@ -87,24 +87,12 @@
     max-width: 390px;
     max-height: auto;
   }
-
-  h1 {
-    font-size: 25px;
-  }
-
-  h2 {
-    font-size: 20px;
-  }
-
-  h3 {
-    font-size: 17px;
-  }
 }
 
 /* Media query para mobile */
 @media screen and (max-width: 375px) {
   .dashboard .post-details figure img {
-    max-width: fit-content;
+    max-width: 359px;
     max-height: auto;
   }
 }
