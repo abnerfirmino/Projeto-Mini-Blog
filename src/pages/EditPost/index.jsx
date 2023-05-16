@@ -1,15 +1,16 @@
 import './styles.css';
 import { useEffect, useState } from 'react';
 import { useAuthContext } from '../../hooks/useAuthContext';
-import { useInsertDocument } from '../../hooks/useInsertDocument';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useFetchDocument } from '../../hooks/useFetchDocument';
+import { useUpdateDocument } from '../../hooks/useUpdateDocument';
 
 const EditPost = () => {
   const { user } = useAuthContext();
   const { id } = useParams();
   const { document: post } = useFetchDocument('posts', id);
-  const { insertDocument, response } = useInsertDocument('posts');
+
+  const { updateDocument, response } = useUpdateDocument('posts');
 
   // estados
   const [title, setTitle] = useState('');
@@ -55,14 +56,16 @@ const EditPost = () => {
       return false;
     }
 
-    insertDocument({
+    const data = {
       title: title.toUpperCase(),
       image,
       body,
       tagsArray: tagsFinalArray,
       uid: user.uid,
       createdBy: user.displayName,
-    });
+    };
+
+    updateDocument(id, data);
 
     setTitle('');
     setImage('');
@@ -70,7 +73,7 @@ const EditPost = () => {
     setTags('');
 
     // Redireciona o usuáro para Home
-    navigate('/');
+    navigate('/dashboard');
   };
 
   return (
