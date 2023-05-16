@@ -85,7 +85,7 @@ const NavBar = () => {
                   to="/dashboard"
                   className={({ isActive }) => (isActive ? 'active' : '')}
                 >
-                  Visualizar Posts
+                  Meus Posts
                 </NavLink>
               </li>
               {user && (
