@@ -38,7 +38,7 @@
   justify-content: center;
   text-align: center;
   flex-flow: column wrap;
-  margin-bottom: 1.2em;
+  margin-bottom: 0.5em;
 }
 
 .tags span {
