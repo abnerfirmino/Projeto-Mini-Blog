@@ -19,7 +19,7 @@ const UserDashboard = () => {
     loading,
   } = useFetchDocuments('posts', null, uid);
 
-  const { deleteDocument } = useDeleteDocument('posts');
+  const { deleteDocument, response } = useDeleteDocument('posts');
 
   return (
     <div className="dashboard">
@@ -86,6 +86,7 @@ const UserDashboard = () => {
           </button>
         </div>
       )}
+      {response.error && <span className="error">{response.error}</span>}
     </div>
   );
 };
