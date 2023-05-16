@@ -19,6 +19,7 @@ import { useAuthentication } from './hooks/useAuthentication';
 
 // imports do firebase
 import { onAuthStateChanged } from 'firebase/auth';
+import { EditPost } from './pages/EditPost';
 
 const App = () => {
   // estados da app
@@ -71,6 +72,10 @@ const App = () => {
                 <Route
                   path="/dashboard"
                   element={user ? <UserDashboard /> : <Navigate to="/login" />}
+                />
+                <Route
+                  path="dashboard/posts/edit/:id"
+                  element={user ? <EditPost /> : <Navigate to="/login" />}
                 />
               </Routes>
             </div>
