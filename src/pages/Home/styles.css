@@ -43,3 +43,26 @@
   font-size: 14px;
   font-weight: bold;
 }
+
+/* Gerenciamento da imagem do usuário */
+.user-welcome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-welcome .profile-picture {
+  width: 30%;
+  height: auto;
+}
+
+.home .profile-picture img {
+  width: 100px;
+  height: 100px;
+  border: none;
+  border-radius: 50%;
+}
+
+.profile-picture img:hover {
+  cursor: pointer;
+}

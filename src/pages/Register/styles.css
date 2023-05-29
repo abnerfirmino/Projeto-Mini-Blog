@@ -5,3 +5,43 @@
 .register p {
   color: #aaa;
 }
+
+/* Gerenciamento da imagem do usuário */
+.register .user-welcome {
+  position: relative;
+}
+
+.user-welcome .profile-picture {
+  width: 30%;
+  height: auto;
+}
+
+.register .profile-picture img {
+  width: 100px;
+  height: 100px;
+  border: none;
+  border-radius: 50%;
+}
+
+.profile-picture img:hover {
+  cursor: default;
+}
+
+.edit-picture {
+  position: absolute;
+  background-color: #fff;
+  width: fit-content;
+  bottom: 5px;
+  padding: 1px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin: 0;
+}
+
+.edit-picture:hover {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}

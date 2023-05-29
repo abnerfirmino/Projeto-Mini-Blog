@@ -24,7 +24,6 @@ import { EditPost } from './pages/EditPost';
 const App = () => {
   // estados da app
   const [user, setUser] = useState(undefined);
-  const [userName, setUserName] = useState('');
   const { auth } = useAuthentication();
 
   const loadingUser = user === undefined;
@@ -33,10 +32,6 @@ const App = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setUser(user);
-
-      if (user) {
-        setUserName(user.displayName);
-      }
     });
   }, [auth]);
 
@@ -47,7 +42,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <AuthContextProvider value={{ user, userName }}>
+      <AuthContextProvider value={{ user }}>
         <BrowserRouter>
           <NavBar />
           <main>

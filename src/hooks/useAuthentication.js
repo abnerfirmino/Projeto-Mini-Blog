@@ -42,6 +42,7 @@ const useAuthentication = () => {
 
       await updateProfile(user, {
         displayName: data.name,
+        photoURL: data.photoUrl,
       });
 
       setLoading(false);
