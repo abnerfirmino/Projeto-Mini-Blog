@@ -32,7 +32,7 @@ const PostDetails = ({ id, createdBy, image, tagsArray, title }) => {
 export { PostDetails };
 
 PostDetails.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   createdBy: PropTypes.string.isRequired,
   image: urlPropType.isRequired,
   tagsArray: PropTypes.array.isRequired,
