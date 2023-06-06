@@ -23,8 +23,7 @@ const Search = () => {
             </button>
           </div>
         )}
-        {posts &&
-          posts.map((post) => <PostDetails key={post.id} post={post} />)}
+        {posts && posts.map((post) => <PostDetails key={post.id} {...post} />)}
       </div>
     </div>
   );

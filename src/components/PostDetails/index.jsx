@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import urlPropType from 'url-prop-type';
 
-const PostDetails = ({ post }) => {
+const PostDetails = ({ id, createdBy, image, tagsArray, title }) => {
   return (
     <div className="post-details">
       <figure>
-        <img src={post.image} alt={post.title} />
+        <img src={image} alt={title} />
       </figure>
-      <h2>{post.title}</h2>
-      <p className="created-by">Criado por: {post.createdBy}</p>
+      <h2>{title}</h2>
+      <p className="created-by">Criado por: {createdBy}</p>
       <div className="tags">
-        {post.tagsArray
+        {tagsArray
           // eslint-disable-next-line react/prop-types
           .filter((tag) => tag !== '')
           .map((tag) => (
@@ -22,7 +22,7 @@ const PostDetails = ({ post }) => {
             </p>
           ))}
       </div>
-      <Link to={`/posts/${post.id}`} className="btn btn-outline">
+      <Link to={`/posts/${id}`} className="btn btn-outline">
         Ler...
       </Link>
     </div>
@@ -32,13 +32,9 @@ const PostDetails = ({ post }) => {
 export { PostDetails };
 
 PostDetails.propTypes = {
-  post: PropTypes.objectOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      createdBy: PropTypes.string.isRequired,
-      tagsArray: PropTypes.array.isRequired,
-      image: urlPropType.isRequired,
-    }),
-  ),
+  id: PropTypes.number.isRequired,
+  createdBy: PropTypes.string.isRequired,
+  image: urlPropType.isRequired,
+  tagsArray: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired,
 };

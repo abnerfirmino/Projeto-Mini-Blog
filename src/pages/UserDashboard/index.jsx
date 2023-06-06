@@ -40,7 +40,7 @@ const UserDashboard = () => {
         <div className="grid">
           {posts.map((post) => (
             <div key={post.id}>
-              <PostDetails post={post} />
+              <PostDetails {...post} />
               <div className="buttons">
                 <Link to={`posts/edit/${post.id}`} className="btn btn-outline">
                   Editar
@@ -62,7 +62,7 @@ const UserDashboard = () => {
         posts.length <= 2 &&
         posts.map((post) => (
           <>
-            <PostDetails key={post.id} post={post} />
+            <PostDetails key={post.id} {...post} />
             <div className="buttons">
               <Link to={`posts/edit/${post.id}`} className="btn btn-outline">
                 Editar

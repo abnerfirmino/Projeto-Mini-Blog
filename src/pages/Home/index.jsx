@@ -63,8 +63,7 @@ const Home = () => {
             <strong>Ocorreu um erro ao carregar os dados :(</strong>
           </p>
         )}
-        {posts &&
-          posts.map((post) => <PostDetails key={post.id} post={post} />)}
+        {posts && posts.map((post) => <PostDetails key={post.id} {...post} />)}
         {posts && posts.length === 0 && (
           <div className="noposts">
             <p>Nenhum post foi encontrado...</p>
